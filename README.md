@@ -60,9 +60,9 @@ Wallet clients can use one of two RPC servers:
 
 Install the latest MSIs available here:
 
-https://github.com/btcsuite/btcd/releases
+https://github.com/wificoin-project/wfcd/releases
 
-https://github.com/btcsuite/btcwallet/releases
+https://github.com/wificoin-project/wfccwallet/releases
 
 ### Windows/Linux/BSD/POSIX - Build from source
 
@@ -96,8 +96,8 @@ For a first time installation, the project and dependency sources can be
 obtained manually with `git` and `glide` (create directories as needed):
 
 ```
-git clone https://github.com/btcsuite/btcwallet $GOPATH/src/github.com/btcsuite/btcwallet
-cd $GOPATH/src/github.com/btcsuite/btcwallet
+git clone https://github.com/wificoin-project/wfcwallet $GOPATH/src/github.com/wificoin-project/wfcwallet
+cd $GOPATH/src/github.com/wificoin-project/wfcwallet
 glide install
 ```
 
@@ -105,7 +105,7 @@ To update an existing source tree, pull the latest changes and install the
 matching dependencies:
 
 ```
-cd $GOPATH/src/github.com/btcsuite/btcwallet
+cd $GOPATH/src/github.com/wificoin-project/wfcwallet
 git pull
 glide install
 ```
@@ -145,19 +145,19 @@ Windows, or any terminal emulator on *nix.
 - Run the following command to start btcd:
 
 ```
-btcd -u rpcuser -P rpcpass
+wfcd -u rpcuser -P rpcpass
 ```
 
 - Run the following command to create a wallet:
 
 ```
-btcwallet -u rpcuser -P rpcpass --create
+wfcwallet -u rpcuser -P rpcpass --create
 ```
 
 - Run the following command to start btcwallet:
 
 ```
-btcwallet -u rpcuser -P rpcpass
+wfcwallet -u rpcuser -P rpcpass
 ```
 
 If everything appears to be working, it is recommended at this point to

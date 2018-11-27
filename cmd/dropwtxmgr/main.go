@@ -11,7 +11,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/wificoin-project/wfcutil"
+	btcutil "github.com/wificoin-project/wfcutil"
 	"github.com/wificoin-project/wfcwallet/walletdb"
 	_ "github.com/wificoin-project/wfcwallet/walletdb/bdb"
 	"github.com/wificoin-project/wfcwallet/wtxmgr"

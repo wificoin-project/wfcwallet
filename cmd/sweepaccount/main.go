@@ -17,7 +17,7 @@ import (
 	"github.com/wificoin-project/wfcd/rpcclient"
 	"github.com/wificoin-project/wfcd/txscript"
 	"github.com/wificoin-project/wfcd/wire"
-	"github.com/wificoin-project/wfcutil"
+	btcutil "github.com/wificoin-project/wfcutil"
 	"github.com/wificoin-project/wfcwallet/internal/cfgutil"
 	"github.com/wificoin-project/wfcwallet/netparams"
 	"github.com/wificoin-project/wfcwallet/wallet/txauthor"

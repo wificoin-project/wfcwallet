@@ -19,9 +19,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/btcsuite/btcd/btcjson"
-	"github.com/btcsuite/btcwallet/chain"
-	"github.com/btcsuite/btcwallet/wallet"
+	"github.com/wificoin-project/wfcd/btcjson"
+	"github.com/wificoin-project/wfcwallet/chain"
+	"github.com/wificoin-project/wfcwallet/wallet"
 	"github.com/btcsuite/websocket"
 )
 

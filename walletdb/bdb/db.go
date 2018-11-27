@@ -8,8 +8,8 @@ import (
 	"io"
 	"os"
 
-	"github.com/btcsuite/btcwallet/walletdb"
-	"github.com/coreos/bbolt"
+	"github.com/wificoin-project/wfcwallet/walletdb"
+	bolt "github.com/coreos/bbolt"
 )
 
 // convertErr converts some bolt errors to the equivalent walletdb error.

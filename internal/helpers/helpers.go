@@ -7,14 +7,14 @@
 package helpers
 
 import (
-	"github.com/btcsuite/btcd/wire"
-	"github.com/btcsuite/btcutil"
+	"github.com/wificoin-project/wfcd/wire"
+	"github.com/wificoin-project/wfcutil"
 )
 
 // SumOutputValues sums up the list of TxOuts and returns an Amount.
-func SumOutputValues(outputs []*wire.TxOut) (totalOutput btcutil.Amount) {
+func SumOutputValues(outputs []*wire.TxOut) (totalOutput wfcutil.Amount) {
 	for _, txOut := range outputs {
-		totalOutput += btcutil.Amount(txOut.Value)
+		totalOutput += wfcutil.Amount(txOut.Value)
 	}
 	return totalOutput
 }

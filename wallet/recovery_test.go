@@ -4,7 +4,7 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/btcsuite/btcwallet/wallet"
+	"github.com/wificoin-project/wfcwallet/wallet"
 )
 
 // Harness holds the BranchRecoveryState being tested, the recovery window being

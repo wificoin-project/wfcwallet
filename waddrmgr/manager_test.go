@@ -14,11 +14,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/btcsuite/btcd/chaincfg"
-	"github.com/btcsuite/btcd/chaincfg/chainhash"
-	"github.com/btcsuite/btcutil"
-	"github.com/btcsuite/btcwallet/snacl"
-	"github.com/btcsuite/btcwallet/walletdb"
+	"github.com/wificoin-project/wfcd/chaincfg"
+	"github.com/wificoin-project/wfcd/chaincfg/chainhash"
+	"github.com/wificoin-project/wfcutil"
+	"github.com/wificoin-project/wfcwallet/snacl"
+	"github.com/wificoin-project/wfcwallet/walletdb"
 	"github.com/davecgh/go-spew/spew"
 )
 

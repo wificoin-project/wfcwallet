@@ -6,17 +6,17 @@ import (
 	"sync"
 	"time"
 
-	"github.com/btcsuite/btcd/chaincfg"
-	"github.com/btcsuite/btcd/chaincfg/chainhash"
-	"github.com/btcsuite/btcd/rpcclient"
-	"github.com/btcsuite/btcd/txscript"
-	"github.com/btcsuite/btcd/wire"
-	"github.com/btcsuite/btcutil"
-	"github.com/btcsuite/btcutil/gcs"
-	"github.com/btcsuite/btcutil/gcs/builder"
-	"github.com/btcsuite/btcwallet/waddrmgr"
-	"github.com/btcsuite/btcwallet/wtxmgr"
-	"github.com/lightninglabs/neutrino"
+	"github.com/wificoin-project/wfcd/chaincfg"
+	"github.com/wificoin-project/wfcd/chaincfg/chainhash"
+	"github.com/wificoin-project/wfcd/rpcclient"
+	"github.com/wificoin-project/wfcd/txscript"
+	"github.com/wificoin-project/wfcd/wire"
+	"github.com/wificoin-project/wfcutil"
+	"github.com/wificoin-project/wfcutil/gcs"
+	"github.com/wificoin-project/wfcutil/gcs/builder"
+	"github.com/wificoin-project/wfcwallet/waddrmgr"
+	"github.com/wificoin-project/wfcwallet/wtxmgr"
+	"github.com/wificoin-project/neutrino"
 )
 
 // NeutrinoClient is an implementation of the btcwalet chain.Interface interface.
@@ -317,8 +317,8 @@ func (s *NeutrinoClient) pollCFilter(hash *chainhash.Hash) (*gcs.Filter, error) 
 }
 
 // Rescan replicates the RPC client's Rescan command.
-func (s *NeutrinoClient) Rescan(startHash *chainhash.Hash, addrs []btcutil.Address,
-	outPoints map[wire.OutPoint]btcutil.Address) error {
+func (s *NeutrinoClient) Rescan(startHash *chainhash.Hash, addrs []wfcutil.Address,
+	outPoints map[wire.OutPoint]wfcutil.Address) error {
 
 	s.clientMtx.Lock()
 	defer s.clientMtx.Unlock()
@@ -406,14 +406,14 @@ func (s *NeutrinoClient) NotifyBlocks() error {
 	// start a rescan without watching any addresses.
 	if !s.scanning {
 		s.clientMtx.Unlock()
-		return s.NotifyReceived([]btcutil.Address{})
+		return s.NotifyReceived([]wfcutil.Address{})
 	}
 	s.clientMtx.Unlock()
 	return nil
 }
 
 // NotifyReceived replicates the RPC client's NotifyReceived command.
-func (s *NeutrinoClient) NotifyReceived(addrs []btcutil.Address) error {
+func (s *NeutrinoClient) NotifyReceived(addrs []wfcutil.Address) error {
 	s.clientMtx.Lock()
 
 	// If we have a rescan running, we just need to add the appropriate
@@ -468,7 +468,7 @@ func (s *NeutrinoClient) SetStartTime(startTime time.Time) {
 // onFilteredBlockConnected sends appropriate notifications to the notification
 // channel.
 func (s *NeutrinoClient) onFilteredBlockConnected(height int32,
-	header *wire.BlockHeader, relevantTxs []*btcutil.Tx) {
+	header *wire.BlockHeader, relevantTxs []*wfcutil.Tx) {
 	ntfn := FilteredBlockConnected{
 		Block: &wtxmgr.BlockMeta{
 			Block: wtxmgr.Block{

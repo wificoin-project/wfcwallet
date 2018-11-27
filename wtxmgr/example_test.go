@@ -7,10 +7,10 @@ package wtxmgr
 import (
 	"fmt"
 
-	"github.com/btcsuite/btcd/chaincfg"
-	"github.com/btcsuite/btcd/chaincfg/chainhash"
-	"github.com/btcsuite/btcd/wire"
-	"github.com/btcsuite/btcwallet/walletdb"
+	"github.com/wificoin-project/wfcd/chaincfg"
+	"github.com/wificoin-project/wfcd/chaincfg/chainhash"
+	"github.com/wificoin-project/wfcd/wire"
+	"github.com/wificoin-project/wfcwallet/walletdb"
 )
 
 var (

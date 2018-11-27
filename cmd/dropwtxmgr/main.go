@@ -11,10 +11,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/btcsuite/btcutil"
-	"github.com/btcsuite/btcwallet/walletdb"
-	_ "github.com/btcsuite/btcwallet/walletdb/bdb"
-	"github.com/btcsuite/btcwallet/wtxmgr"
+	"github.com/wificoin-project/wfcutil"
+	"github.com/wificoin-project/wfcwallet/walletdb"
+	_ "github.com/wificoin-project/wfcwallet/walletdb/bdb"
+	"github.com/wificoin-project/wfcwallet/wtxmgr"
 	"github.com/jessevdk/go-flags"
 )
 

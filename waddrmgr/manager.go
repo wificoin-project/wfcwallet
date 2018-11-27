@@ -11,12 +11,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/btcsuite/btcd/chaincfg"
-	"github.com/btcsuite/btcutil"
-	"github.com/btcsuite/btcutil/hdkeychain"
-	"github.com/btcsuite/btcwallet/internal/zero"
-	"github.com/btcsuite/btcwallet/snacl"
-	"github.com/btcsuite/btcwallet/walletdb"
+	"github.com/wificoin-project/wfcd/chaincfg"
+	"github.com/wificoin-project/wfcutil"
+	"github.com/wificoin-project/wfcutil/hdkeychain"
+	"github.com/wificoin-project/wfcwallet/internal/zero"
+	"github.com/wificoin-project/wfcwallet/snacl"
+	"github.com/wificoin-project/wfcwallet/walletdb"
 )
 
 const (
@@ -608,7 +608,7 @@ func (m *Manager) NeuterRootKey(ns walletdb.ReadWriteBucket) error {
 // pay-to-pubkey-hash addresses and the script associated with
 // pay-to-script-hash addresses.
 func (m *Manager) Address(ns walletdb.ReadBucket,
-	address btcutil.Address) (ManagedAddress, error) {
+	address wfcutil.Address) (ManagedAddress, error) {
 
 	m.mtx.RLock()
 	defer m.mtx.RUnlock()
@@ -631,7 +631,7 @@ func (m *Manager) Address(ns walletdb.ReadBucket,
 }
 
 // MarkUsed updates the used flag for the provided address.
-func (m *Manager) MarkUsed(ns walletdb.ReadWriteBucket, address btcutil.Address) error {
+func (m *Manager) MarkUsed(ns walletdb.ReadWriteBucket, address wfcutil.Address) error {
 	m.mtx.RLock()
 	defer m.mtx.RUnlock()
 
@@ -658,7 +658,7 @@ func (m *Manager) MarkUsed(ns walletdb.ReadWriteBucket, address btcutil.Address)
 // AddrAccount returns the account to which the given address belongs. We also
 // return the scoped manager that owns the addr+account combo.
 func (m *Manager) AddrAccount(ns walletdb.ReadBucket,
-	address btcutil.Address) (*ScopedKeyManager, uint32, error) {
+	address wfcutil.Address) (*ScopedKeyManager, uint32, error) {
 
 	m.mtx.RLock()
 	defer m.mtx.RUnlock()
@@ -708,7 +708,7 @@ func (m *Manager) ForEachActiveAccountAddress(ns walletdb.ReadBucket,
 
 // ForEachActiveAddress calls the given function with each active address
 // stored in the manager, breaking early on error.
-func (m *Manager) ForEachActiveAddress(ns walletdb.ReadBucket, fn func(addr btcutil.Address) error) error {
+func (m *Manager) ForEachActiveAddress(ns walletdb.ReadBucket, fn func(addr wfcutil.Address) error) error {
 	m.mtx.RLock()
 	defer m.mtx.RUnlock()
 

@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/btcsuite/btcd/chaincfg"
-	"github.com/btcsuite/btcwallet/walletdb"
+	"github.com/wificoin-project/wfcd/chaincfg"
+	"github.com/wificoin-project/wfcwallet/walletdb"
 )
 
 // applyMigration is a helper function that allows us to assert the state of the

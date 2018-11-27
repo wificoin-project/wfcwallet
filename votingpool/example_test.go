@@ -24,14 +24,14 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/btcsuite/btcd/chaincfg"
-	"github.com/btcsuite/btcd/txscript"
-	"github.com/btcsuite/btcutil"
-	"github.com/btcsuite/btcwallet/votingpool"
-	"github.com/btcsuite/btcwallet/waddrmgr"
-	"github.com/btcsuite/btcwallet/walletdb"
-	_ "github.com/btcsuite/btcwallet/walletdb/bdb"
-	"github.com/btcsuite/btcwallet/wtxmgr"
+	"github.com/wificoin-project/wfcd/chaincfg"
+	"github.com/wificoin-project/wfcd/txscript"
+	"github.com/wificoin-project/wfcutil"
+	"github.com/wificoin-project/wfcwallet/votingpool"
+	"github.com/wificoin-project/wfcwallet/waddrmgr"
+	"github.com/wificoin-project/wfcwallet/walletdb"
+	_ "github.com/wificoin-project/wfcwallet/walletdb/bdb"
+	"github.com/wificoin-project/wfcwallet/wtxmgr"
 )
 
 var (

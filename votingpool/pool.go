@@ -8,12 +8,12 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/btcsuite/btcd/txscript"
-	"github.com/btcsuite/btcutil"
-	"github.com/btcsuite/btcutil/hdkeychain"
-	"github.com/btcsuite/btcwallet/internal/zero"
-	"github.com/btcsuite/btcwallet/waddrmgr"
-	"github.com/btcsuite/btcwallet/walletdb"
+	"github.com/wificoin-project/wfcd/txscript"
+	"github.com/wificoin-project/wfcutil"
+	"github.com/wificoin-project/wfcutil/hdkeychain"
+	"github.com/wificoin-project/wfcwallet/internal/zero"
+	"github.com/wificoin-project/wfcwallet/waddrmgr"
+	"github.com/wificoin-project/wfcwallet/walletdb"
 )
 
 const (

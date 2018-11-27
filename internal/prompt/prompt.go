@@ -12,8 +12,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/btcsuite/btcutil/hdkeychain"
-	"github.com/btcsuite/btcwallet/internal/legacy/keystore"
+	"github.com/wificoin-project/wfcutil/hdkeychain"
+	"github.com/wificoin-project/wfcwallet/internal/legacy/keystore"
 	"github.com/btcsuite/golangcrypto/ssh/terminal"
 )
 

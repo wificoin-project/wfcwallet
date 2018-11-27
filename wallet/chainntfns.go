@@ -10,13 +10,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/btcsuite/btcd/chaincfg/chainhash"
-	"github.com/btcsuite/btcd/txscript"
-	"github.com/btcsuite/btcd/wire"
-	"github.com/btcsuite/btcwallet/chain"
-	"github.com/btcsuite/btcwallet/waddrmgr"
-	"github.com/btcsuite/btcwallet/walletdb"
-	"github.com/btcsuite/btcwallet/wtxmgr"
+	"github.com/wificoin-project/wfcd/chaincfg/chainhash"
+	"github.com/wificoin-project/wfcd/txscript"
+	"github.com/wificoin-project/wfcd/wire"
+	"github.com/wificoin-project/wfcwallet/chain"
+	"github.com/wificoin-project/wfcwallet/waddrmgr"
+	"github.com/wificoin-project/wfcwallet/walletdb"
+	"github.com/wificoin-project/wfcwallet/wtxmgr"
 )
 
 const (

@@ -3,19 +3,19 @@ package chain
 import (
 	"time"
 
-	"github.com/btcsuite/btcd/chaincfg/chainhash"
-	"github.com/btcsuite/btcd/wire"
-	"github.com/btcsuite/btcutil"
-	"github.com/btcsuite/btcwallet/waddrmgr"
-	"github.com/btcsuite/btcwallet/wtxmgr"
+	"github.com/wificoin-project/wfcd/chaincfg/chainhash"
+	"github.com/wificoin-project/wfcd/wire"
+	"github.com/wificoin-project/wfcutil"
+	"github.com/wificoin-project/wfcwallet/waddrmgr"
+	"github.com/wificoin-project/wfcwallet/wtxmgr"
 )
 
 // BackEnds returns a list of the available back ends.
 // TODO: Refactor each into a driver and use dynamic registration.
 func BackEnds() []string {
 	return []string{
-		"bitcoind",
-		"btcd",
+		"wificoind",
+		"wfcd",
 		"neutrino",
 	}
 }
@@ -34,8 +34,8 @@ type Interface interface {
 	FilterBlocks(*FilterBlocksRequest) (*FilterBlocksResponse, error)
 	BlockStamp() (*waddrmgr.BlockStamp, error)
 	SendRawTransaction(*wire.MsgTx, bool) (*chainhash.Hash, error)
-	Rescan(*chainhash.Hash, []btcutil.Address, map[wire.OutPoint]btcutil.Address) error
-	NotifyReceived([]btcutil.Address) error
+	Rescan(*chainhash.Hash, []wfcutil.Address, map[wire.OutPoint]wfcutil.Address) error
+	NotifyReceived([]wfcutil.Address) error
 	NotifyBlocks() error
 	Notifications() <-chan interface{}
 	BackEnd() string
@@ -68,9 +68,9 @@ type (
 	// is also included to monitor for spends.
 	FilterBlocksRequest struct {
 		Blocks           []wtxmgr.BlockMeta
-		ExternalAddrs    map[waddrmgr.ScopedIndex]btcutil.Address
-		InternalAddrs    map[waddrmgr.ScopedIndex]btcutil.Address
-		WatchedOutPoints map[wire.OutPoint]btcutil.Address
+		ExternalAddrs    map[waddrmgr.ScopedIndex]wfcutil.Address
+		InternalAddrs    map[waddrmgr.ScopedIndex]wfcutil.Address
+		WatchedOutPoints map[wire.OutPoint]wfcutil.Address
 	}
 
 	// FilterBlocksResponse reports the set of all internal and external
@@ -85,7 +85,7 @@ type (
 		BlockMeta          wtxmgr.BlockMeta
 		FoundExternalAddrs map[waddrmgr.KeyScope]map[uint32]struct{}
 		FoundInternalAddrs map[waddrmgr.KeyScope]map[uint32]struct{}
-		FoundOutPoints     map[wire.OutPoint]btcutil.Address
+		FoundOutPoints     map[wire.OutPoint]wfcutil.Address
 		RelevantTxns       []*wire.MsgTx
 	}
 

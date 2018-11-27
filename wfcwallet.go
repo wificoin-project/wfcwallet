@@ -14,11 +14,11 @@ import (
 	"runtime"
 	"sync"
 
-	"github.com/btcsuite/btcwallet/chain"
-	"github.com/btcsuite/btcwallet/rpc/legacyrpc"
-	"github.com/btcsuite/btcwallet/wallet"
-	"github.com/btcsuite/btcwallet/walletdb"
-	"github.com/lightninglabs/neutrino"
+	"github.com/wificoin-project/wfcwallet/chain"
+	"github.com/wificoin-project/wfcwallet/rpc/legacyrpc"
+	"github.com/wificoin-project/wfcwallet/wallet"
+	"github.com/wificoin-project/wfcwallet/walletdb"
+	"github.com/wificoin-project/neutrino"
 )
 
 var (
@@ -265,7 +265,7 @@ func readCAFile() []byte {
 func startChainRPC(certs []byte) (*chain.RPCClient, error) {
 	log.Infof("Attempting RPC client connection to %v", cfg.RPCConnect)
 	rpcc, err := chain.NewRPCClient(activeNet.Params, cfg.RPCConnect,
-		cfg.BtcdUsername, cfg.BtcdPassword, certs, cfg.DisableClientTLS, 0)
+		cfg.WfcdUsername, cfg.WfcdPassword, certs, cfg.DisableClientTLS, 0)
 	if err != nil {
 		return nil, err
 	}

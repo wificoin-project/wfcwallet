@@ -8,11 +8,11 @@
 // Full documentation of the API implemented by this package is maintained in a
 // language-agnostic document:
 //
-//   https://github.com/btcsuite/btcwallet/blob/master/rpc/documentation/api.md
+//   https://github.com/wificoin-project/wfcwallet/blob/master/rpc/documentation/api.md
 //
 // Any API changes must be performed according to the steps listed here:
 //
-//   https://github.com/btcsuite/btcwallet/blob/master/rpc/documentation/serverchanges.md
+//   https://github.com/wificoin-project/wfcwallet/blob/master/rpc/documentation/serverchanges.md
 package rpcserver
 
 import (
@@ -25,20 +25,20 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 
-	"github.com/btcsuite/btcd/chaincfg/chainhash"
-	"github.com/btcsuite/btcd/rpcclient"
-	"github.com/btcsuite/btcd/txscript"
-	"github.com/btcsuite/btcd/wire"
-	"github.com/btcsuite/btcutil"
-	"github.com/btcsuite/btcutil/hdkeychain"
-	"github.com/btcsuite/btcwallet/chain"
-	"github.com/btcsuite/btcwallet/internal/cfgutil"
-	"github.com/btcsuite/btcwallet/internal/zero"
-	"github.com/btcsuite/btcwallet/netparams"
-	pb "github.com/btcsuite/btcwallet/rpc/walletrpc"
-	"github.com/btcsuite/btcwallet/waddrmgr"
-	"github.com/btcsuite/btcwallet/wallet"
-	"github.com/btcsuite/btcwallet/walletdb"
+	"github.com/wificoin-project/wfcd/chaincfg/chainhash"
+	"github.com/wificoin-project/wfcd/rpcclient"
+	"github.com/wificoin-project/wfcd/txscript"
+	"github.com/wificoin-project/wfcd/wire"
+	"github.com/wificoin-project/wfcutil"
+	"github.com/wificoin-project/wfcutil/hdkeychain"
+	"github.com/wificoin-project/wfcwallet/chain"
+	"github.com/wificoin-project/wfcwallet/internal/cfgutil"
+	"github.com/wificoin-project/wfcwallet/internal/zero"
+	"github.com/wificoin-project/wfcwallet/netparams"
+	pb "github.com/wificoin-project/wfcwallet/rpc/walletrpc"
+	"github.com/wificoin-project/wfcwallet/waddrmgr"
+	"github.com/wificoin-project/wfcwallet/wallet"
+	"github.com/wificoin-project/wfcwallet/walletdb"
 )
 
 // Public API version constants
@@ -226,7 +226,7 @@ func (s *walletServer) NextAddress(ctx context.Context, req *pb.NextAddressReque
 	*pb.NextAddressResponse, error) {
 
 	var (
-		addr btcutil.Address
+		addr wfcutil.Address
 		err  error
 	)
 	switch req.Kind {
@@ -249,7 +249,7 @@ func (s *walletServer) ImportPrivateKey(ctx context.Context, req *pb.ImportPriva
 
 	defer zero.Bytes(req.Passphrase)
 
-	wif, err := btcutil.DecodeWIF(req.PrivateKeyWif)
+	wif, err := wfcutil.DecodeWIF(req.PrivateKeyWif)
 	if err != nil {
 		return nil, grpc.Errorf(codes.InvalidArgument,
 			"Invalid WIF-encoded private key: %v", err)
@@ -330,7 +330,7 @@ func (s *walletServer) FundTransaction(ctx context.Context, req *pb.FundTransact
 	}
 
 	selectedOutputs := make([]*pb.FundTransactionResponse_PreviousOutput, 0, len(unspentOutputs))
-	var totalAmount btcutil.Amount
+	var totalAmount wfcutil.Amount
 	for _, output := range unspentOutputs {
 		selectedOutputs = append(selectedOutputs, &pb.FundTransactionResponse_PreviousOutput{
 			TransactionHash: output.OutPoint.Hash[:],
@@ -340,15 +340,15 @@ func (s *walletServer) FundTransaction(ctx context.Context, req *pb.FundTransact
 			ReceiveTime:     output.ReceiveTime.Unix(),
 			FromCoinbase:    output.OutputKind == wallet.OutputKindCoinbase,
 		})
-		totalAmount += btcutil.Amount(output.Output.Value)
+		totalAmount += wfcutil.Amount(output.Output.Value)
 
-		if req.TargetAmount != 0 && totalAmount > btcutil.Amount(req.TargetAmount) {
+		if req.TargetAmount != 0 && totalAmount > wfcutil.Amount(req.TargetAmount) {
 			break
 		}
 	}
 
 	var changeScript []byte
-	if req.IncludeChangeScript && totalAmount > btcutil.Amount(req.TargetAmount) {
+	if req.IncludeChangeScript && totalAmount > wfcutil.Amount(req.TargetAmount) {
 		changeAddr, err := s.wallet.NewChangeAddress(req.Account, waddrmgr.KeyScopeBIP0044)
 		if err != nil {
 			return nil, translateError(err)

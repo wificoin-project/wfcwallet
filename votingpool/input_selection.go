@@ -21,11 +21,11 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/btcsuite/btcd/chaincfg"
-	"github.com/btcsuite/btcd/txscript"
-	"github.com/btcsuite/btcutil"
-	"github.com/btcsuite/btcwallet/walletdb"
-	"github.com/btcsuite/btcwallet/wtxmgr"
+	"github.com/wificoin-project/wfcd/chaincfg"
+	"github.com/wificoin-project/wfcd/txscript"
+	"github.com/wificoin-project/wfcutil"
+	"github.com/wificoin-project/wfcwallet/walletdb"
+	"github.com/wificoin-project/wfcwallet/wtxmgr"
 )
 
 const eligibleInputMinConfirmations = 100

@@ -1,6 +1,25 @@
 package: github.com/wificoin-project/wfcwallet
 import:
+- package: github.com/btcsuite/btclog
+- package: github.com/btcsuite/golangcrypto
+  subpackages:
+  - nacl/secretbox
+  - scrypt
+  - ssh/terminal
+- package: github.com/btcsuite/websocket
 - package: github.com/coreos/bbolt
+- package: github.com/davecgh/go-spew
+  subpackages:
+  - spew
+- package: github.com/golang/protobuf
+  subpackages:
+  - proto
+- package: github.com/jessevdk/go-flags
+- package: github.com/jrick/logrotate
+  subpackages:
+  - rotator
+- package: github.com/wificoin-project/gozmq
+- package: github.com/wificoin-project/neutrino
 - package: github.com/wificoin-project/wfcd
   subpackages:
   - blockchain
@@ -8,38 +27,25 @@ import:
   - btcjson
   - chaincfg
   - chaincfg/chainhash
+  - rpcclient
   - txscript
   - wire
-- package: github.com/btcsuite/btclog
 - package: github.com/wificoin-project/wfcutil
   subpackages:
+  - gcs
+  - gcs/builder
   - hdkeychain
-- package: github.com/wificoin-project/neutrino
-- package: github.com/btcsuite/golangcrypto
+- package: golang.org/x/crypto
   subpackages:
-  - nacl/secretbox
   - ripemd160
-  - scrypt
   - ssh/terminal
-- package: github.com/btcsuite/websocket
-- package: github.com/golang/protobuf
-  subpackages:
-  - proto
-- package: github.com/jessevdk/go-flags
 - package: golang.org/x/net
   subpackages:
   - context
 - package: google.golang.org/grpc
+  version: 41344da2231b913fa3d983840a57a6b1b7b631a1
   subpackages:
   - codes
   - credentials
   - grpclog
-- package: github.com/jrick/logrotate
-  subpackages:
-  - rotator
-- package: github.com/wificoin-project/gozmq
-testImport:
-- package: github.com/davecgh/go-spew
-  subpackages:
-  - spew
-
+- package: google.golang.org/genproto
